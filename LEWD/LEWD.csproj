@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{156458F1-42CD-4F3A-B678-33115C28194D}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>LEWD</RootNamespace>
+    <AssemblyName>LEWD</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr4.Runtime.Standard, Version=4.7.1.0, Culture=neutral, PublicKeyToken=e78b2c5abd1fcb3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr4.Runtime.Standard.4.7.1.1\lib\net35\Antlr4.Runtime.Standard.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="grammar\lewdBaseListener.cs" />
+    <Compile Include="grammar\lewdLexer.cs" />
+    <Compile Include="grammar\lewdListener.cs" />
+    <Compile Include="grammar\lewdParser.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\Driver.cs" />
+    <Compile Include="src\Elements\Action\Arithmetic\Add.cs" />
+    <Compile Include="src\Elements\Action\Arithmetic\Eq.cs" />
+    <Compile Include="src\Elements\Action\Assignment.cs" />
+    <Compile Include="src\Elements\Action\BaseAction.cs" />
+    <Compile Include="src\Elements\Action\Condition.cs" />
+    <Compile Include="src\Elements\Action\IO.cs" />
+    <Compile Include="src\Elements\Action\List\Cons.cs" />
+    <Compile Include="src\Elements\Action\List\Head.cs" />
+    <Compile Include="src\Elements\Action\IAction.cs" />
+    <Compile Include="src\Elements\Action\List\Len.cs" />
+    <Compile Include="src\Elements\Action\List\Tail.cs" />
+    <Compile Include="src\Elements\Action\LString\Join.cs" />
+    <Compile Include="src\Elements\Action\LString\SplitStr.cs" />
+    <Compile Include="src\Elements\Action\TimeActions.cs" />
+    <Compile Include="src\Elements\Data\IManyData.cs" />
+    <Compile Include="src\Elements\Data\Time.cs" />
+    <Compile Include="src\Elements\Data\TrueFalse.cs" />
+    <Compile Include="src\Elements\Language\FunctionCall.cs" />
+    <Compile Include="src\Elements\BaseCallable.cs" />
+    <Compile Include="src\Elements\Data\Collection.cs" />
+    <Compile Include="src\Elements\Data\BaseData.cs" />
+    <Compile Include="src\Elements\Data\IData.cs" />
+    <Compile Include="src\Elements\Data\Number.cs" />
+    <Compile Include="src\Elements\Data\Record.cs" />
+    <Compile Include="src\Elements\Data\RecordEntry.cs" />
+    <Compile Include="src\Elements\Data\Str.cs" />
+    <Compile Include="src\Elements\Data\Symbol.cs" />
+    <Compile Include="src\Elements\BaseElement.cs" />
+    <Compile Include="src\Elements\Language\Parameter.cs" />
+    <Compile Include="src\Elements\Structure\Document.cs" />
+    <Compile Include="src\Elements\ICallable.cs" />
+    <Compile Include="src\Elements\IElement.cs" />
+    <Compile Include="src\Elements\Structure\Function.cs" />
+    <Compile Include="src\Elements\Structure\IBlockDefiner.cs" />
+    <Compile Include="src\Elements\Structure\INameDefiner.cs" />
+    <Compile Include="src\Elements\Structure\Noop.cs" />
+    <Compile Include="src\Exceptions\NameNotFoundException.cs" />
+    <Compile Include="src\Exceptions\ParameterException.cs" />
+    <Compile Include="src\Exceptions\TypeException.cs" />
+    <Compile Include="src\Interpreter.cs" />
+    <Compile Include="src\language\LEWDListener.cs" />
+    <Compile Include="src\ParsedElement.cs" />
+    <Compile Include="src\Parser.cs" />
+    <Compile Include="src\StaticScope.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="grammar\build.bat" />
+    <None Include="grammar\lewd.g4" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="grammar\antlr-4.7.1-complete.jar" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
